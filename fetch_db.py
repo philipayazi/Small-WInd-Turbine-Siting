@@ -12,21 +12,11 @@ def all_cities():
     # return records
 
     cities = [city for city in db.mpg_ang.aggregate([
-        {"$project": {"mph": {"$avg": "mph"}, "deg": {"$avg": "deg"}}}
+        {"$project": {"_id": 0,"city": 1,"loc": 1, "mph_avg": {"$avg": "$mph"}, "deg_avg": {"$avg": "$deg"}, "change_mph_avg": {"$avg": "$mph_change"}, "change_deg_avg": {"$avg": "$deg_change"}}}
         ])]
 
     return cities
 
-#     db.students.aggregate([
-#    { $project: { quizAvg: { $avg: "$quizzes"}, labAvg: { $avg: "$labs" } } } }
-#     ])
-    # Loop over cities to find avg wind speed
-    # when looping, access each date and then find each value by key.
-    # Sum each of these values and divide by the number of values
-    # for city in cities:
-    #     mean(mph.values())
-
-    
 
     # wind_speed = [speed for speed in db.#collectionName.find({'$avg': int{_x}})]
     # return wind_speed
