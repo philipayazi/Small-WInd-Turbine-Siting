@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from flask import jsonify
 
 def get_db():
     # Make connection to DB and return database
@@ -15,16 +16,14 @@ def all_cities():
         {"$project": {"_id": 0,"city": 1,"loc": 1, "mph_avg": {"$avg": "$mph"}, "deg_avg": {"$avg": "$deg"}, "change_mph_avg": {"$avg": "$mph_change"}, "change_deg_avg": {"$avg": "$deg_change"}}}
         ])]
 
-    return cities
+    response = jsonify(cities)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    print(response.headers)
+    return response
 
+# def response():
 
-    # wind_speed = [speed for speed in db.#collectionName.find({'$avg': int{_x}})]
-    # return wind_speed
-    # wind_direction = [direction for direction db.#collectionName.find({'$avg': int{city_y}})]
-
-# def city():
-#     db = get_db()
-#     specific_city = [city for city in db.#collectionName.find({})]
+#     return response
 
 
 if __name__ == '__main__':
