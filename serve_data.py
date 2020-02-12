@@ -7,7 +7,10 @@ app = Flask(__name__)
 @app.route('/')
 def get_all_cities():
     cities = all_cities()
-    return jsonify(cities)
+    response = jsonify(cities)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    print(response.headers)
+    return response
 
 # generate route for Energy Production vs Life Span page
 # @app.route('/production_vs_lifespan')

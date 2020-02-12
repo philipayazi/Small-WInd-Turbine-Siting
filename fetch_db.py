@@ -16,10 +16,8 @@ def all_cities():
         {"$project": {"_id": 0,"city": 1,"loc": 1, "mph_avg": {"$avg": "$mph"}, "deg_avg": {"$avg": "$deg"}, "change_mph_avg": {"$avg": "$mph_change"}, "change_deg_avg": {"$avg": "$deg_change"}}}
         ])]
 
-    response = jsonify(cities)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    print(response.headers)
-    return response
+    
+    return cities
 
 # def response():
 
