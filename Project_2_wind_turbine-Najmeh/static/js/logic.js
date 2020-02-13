@@ -3,7 +3,7 @@ var queryurl="http://127.0.0.1:5000/";
 
 
 // Perform a GET request to the query URL
-var jsonData;
+// var jsonData;
 
 d3.json(queryurl, function(data) {
     jsonData=data;
@@ -14,29 +14,40 @@ d3.json(queryurl, function(data) {
             var cities=console.log(item.city);
             var windSpeed= console.log(item.mph_avg);
             var windDirection=console.log(item.deg_avg);
-            var latlng=console.log(item.loc);   
-            // Setting the marker radius for the city by passing weatherData into the markerSize function
-      
-                var circleMarker= L.circleMarker(latlng, 
-                {radius: windSpeed*7,
+            var latlng=console.log(item.loc); 
+
+          //  var speedMarker=[];
+          //  for (var i=0; i< 27; i++){ 
+          //    speedMarker.push(
+            // Setting the marker radius for the city by passing weather speed into the markerSize function
+         
+              // function circleMarker(jsonData){
+              var speedMap=
+                 L.circleMarker(latlng,
+                {radius: windSpeed,
                 fillColor:getColor(windSpeed),
                 color: "#000",
                 weight: 1,
                 opacity: 1,
-                fillOpacity: 0.8  
+                fillOpacity: 0.8 
               }).bindPopup(`<html><strong>${cities}
-              <br>Average Speed:${windSpeed}<br> Average wind direction:$${windDirection}</strong></html>`);
-          });
-        // }
-  //  createMap(circleMarker);
-// });
+              // <br>Average Speed:${windSpeed}<br> Average wind direction:$${windDirection}</strong></html>`)
+            
+            //  )};
+            
+            // });
+            createMap(speedMap);
+  // }
+            });
+          
+});
  
 
   
 
 // Sending our weatherData layer to the createMap function 
 
-// function createMap(circleMarker) {
+function createMap(speedMap) {
     // Define maps layers
     const lightMap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
@@ -56,9 +67,11 @@ d3.json(queryurl, function(data) {
  
     
     zoom: 5,
-    layer : [lightMap]
+    layer : [lightMap,speedMap]
   
   });
+  // var cities = L.layerGroup(cityMarkers);
+
   const baseMaps = {
     // 'Satellite':satelliteMap,
     'Grayscale': lightMap,
@@ -66,17 +79,17 @@ d3.json(queryurl, function(data) {
     'Dark Map': darkmap
   },
   overlayLayer = {
-    'Wind Speed': windSpeed
+    'Wind Speed': speedMap
   };
   
 //   Create a layer control containing our baseMaps and overlay layer of the earthquake geoJson
-
+}
     L.control.layers(baseMaps, overlayLayer, {
       collapsed: false
     }).addTo(myMap);
     myMap.addLayer(lightMap);
-    // myMap.addLayer(weatherMph);
-// }
+    myMap.addLayer(speedMap);
+
 
   function getColor(d) {
       return d > 5 ? '#de2d26' :
@@ -86,8 +99,10 @@ d3.json(queryurl, function(data) {
             d > 1  ? '#e6f5c9' :
                       '#FFEDA0';
 }
- }); 
-
+  
+// function markerSize(windSpeed) {
+//   return windSpeed / 40;
+// }
 
 // Create Lagend
 // var legend = L.control({position: 'bottomright'});
