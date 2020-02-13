@@ -1,4 +1,3 @@
-
 var queryurl="http://127.0.0.1:5000/";
 
 
@@ -83,12 +82,14 @@ function createMap(speedMap) {
   };
   
 //   Create a layer control containing our baseMaps and overlay layer of the earthquake geoJson
-}
+
     L.control.layers(baseMaps, overlayLayer, {
       collapsed: false
     }).addTo(myMap);
     myMap.addLayer(lightMap);
     myMap.addLayer(speedMap);
+
+}
 
 
   function getColor(d) {
@@ -148,5 +149,3 @@ function createMap(speedMap) {
 //   //         window.open(link, "_blank");
 //   //         }
 //   //     );  
-
- 
