@@ -1,24 +1,23 @@
-var queryurl="http://127.0.0.1:5000/";
+var url="http://127.0.0.1:5000/";
 
-
+var data=data;
 // Perform a GET request to the query URL
-// var jsonData;
 
-d3.json(queryurl, function(data) {
-    jsonData=data;
-    console.log(jsonData);
+d3.json(url, function(data) {
+    // jsonData=data;
+    console.log(data);
 
-    createMarkers(data.latlng);
+    createMarkers(data.loc);
   
   function createMarkers(weatherData) {
-          var speedMap=data.forEach(item => {
+                data.forEach(item => {
             var cities=console.log(item.city);
             var windSpeed= console.log(item.mph_avg);
             var windDirection=console.log(item.deg_avg);
             var latlng=console.log(item.loc); 
           //   // Setting the marker radius for the city by passing weather speed into the markerSize function
-         
-                return L.circleMarker(latlng,
+                 
+               L.circleMarker(latlng,
                 {radius: windSpeed,
                 fillColor:getColor(windSpeed),
                 color: "#000",
@@ -26,13 +25,18 @@ d3.json(queryurl, function(data) {
                 opacity: 1,
                 fillOpacity: 0.8 
               }).bindPopup(`<html><strong>${cities}
-              // <br>Average Speed:${windSpeed}<br> Average wind direction:$${windDirection}</strong></html>`) 
+              // <br>Average wind Speed:${windSpeed}<br> Average wind direction:$${windDirection}</strong></html>`) 
+            // }
+            // createMap(speedMap);
+
+            }); 
               
-            });    
-            createMap(speedMap);
+          
         }
-                       
-    });
+      createMap(data.loc);
+
+// });
+
 
 // Sending our weatherData layer to the createMap function 
 
@@ -77,7 +81,8 @@ function createMap(speedMap) {
           collapsed: true
         }).addTo(myMap);
         myMap.addLayer(lightMap);
-        myMap.addLayer(speedMap);    
+        myMap.addLayer(speedMap);  
+
     // Create Lagend
     var legend = L.control({position: 'bottomright'});
 
@@ -99,6 +104,8 @@ function createMap(speedMap) {
       legend.addTo(myMap); 
     
 }
+});
+
 
     function getColor(d) {
       return d > 5 ? '#de2d26' :
