@@ -7,8 +7,10 @@ var queryurl="http://127.0.0.1:5000/";
 d3.json(queryurl, function(data) {
     jsonData=data;
     console.log(jsonData);
+
+    createMarkers(jsonData.latlng);
   
-  // function creatMarker(weatherData) {
+  function createMarkers(weatherData) {
           jsonData.forEach(item => {
             var cities=console.log(item.city);
             var windSpeed= console.log(item.mph_avg);
@@ -18,11 +20,11 @@ d3.json(queryurl, function(data) {
           //  var speedMarker=[];
           //  for (var i=0; i< 27; i++){ 
           //    speedMarker.push(
-            // Setting the marker radius for the city by passing weather speed into the markerSize function
+          //   // Setting the marker radius for the city by passing weather speed into the markerSize function
          
               // function circleMarker(jsonData){
               var speedMap=
-                 L.circleMarker(latlng,
+                L.circleMarker(latlng,
                 {radius: windSpeed,
                 fillColor:getColor(windSpeed),
                 color: "#000",
@@ -32,17 +34,13 @@ d3.json(queryurl, function(data) {
               }).bindPopup(`<html><strong>${cities}
               // <br>Average Speed:${windSpeed}<br> Average wind direction:$${windDirection}</strong></html>`)
             
-            //  )};
-            
-            // });
-            createMap(speedMap);
-  // }
+             
+              createMap(speedMap);
             });
-          
-});
- 
 
-  
+        }
+                
+});
 
 // Sending our weatherData layer to the createMap function 
 
@@ -73,18 +71,18 @@ function createMap(speedMap) {
 
   const baseMaps = {
     // 'Satellite':satelliteMap,
-    'Grayscale': lightMap,
+    'Average of Wind direction': lightMap,
     // 'Outdoors': outdoorMap,
-    'Dark Map': darkmap
+    'Average of Wind Speed': darkmap
   },
   overlayLayer = {
-    'Wind Speed': speedMap
+    'Wind Speed': speedMap,
   };
   
 //   Create a layer control containing our baseMaps and overlay layer of the earthquake geoJson
 
     L.control.layers(baseMaps, overlayLayer, {
-      collapsed: false
+      collapsed: true
     }).addTo(myMap);
     myMap.addLayer(lightMap);
     myMap.addLayer(speedMap);
@@ -99,34 +97,28 @@ function createMap(speedMap) {
             d > 2 ? '#fee5d9':
             d > 1  ? '#e6f5c9' :
                       '#FFEDA0';
-}
+  }
   
-// function markerSize(windSpeed) {
-//   return windSpeed / 40;
-// }
-
 // Create Lagend
-// var legend = L.control({position: 'bottomright'});
+var legend = L.control({position: 'bottomright'});
 
-// legend.onAdd = function (myMap) {
+legend.onAdd = function (myMap) {
 
-//     var div = L.DomUtil.create('div', 'info legend'),
-//     grades = [0, 1,2,3,4,5],
-//     labels = [];
-    
-//     //idea from url:"https://gis.stackexchange.com/questions/193161/add-legend-to-leaflet-map" 
-//     for (var i = 0; i < grades.length; i++) {
+    var div = L.DomUtil.create('div', 'info legend'),
+    grades = [0, 1,2,3,4,5],
+    labels = [];
+    for (var i = 0; i < grades.length; i++) {
       
-//         div.innerHTML +=
-//             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-//             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
 
-//       }
+      }
 
-//     return div;      
-//   };
-//   legend.addTo(myMap); 
-// }
+    return div;      
+  };
+  legend.addTo(myMap); 
+
 
    
       
