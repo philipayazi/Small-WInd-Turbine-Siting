@@ -13,7 +13,7 @@ def all_cities():
     # return records
 
     cities = [city for city in db.mpg_ang.aggregate([
-        {"$project": {"_id": 0,"city": 1,"loc": 1, "mph_avg": {"$avg": "$mph"}, "deg_avg": {"$avg": "$deg"}, "change_mph_avg": {"$avg": "$mph_change"}, "change_deg_avg": {"$avg": "$deg_change"}}}
+        {"$project": {"_id": 0,"city": 1,"loc": 1, "mph": 1, "deg": 1, "mph_avg": {"$avg": "$mph"}, "deg_avg": {"$avg": "$deg"}, "change_mph_avg": {"$avg": "$mph_change"}, "change_deg_avg": {"$avg": "$deg_change"}}}
         ])]
 
     
