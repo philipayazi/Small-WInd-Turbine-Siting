@@ -25,6 +25,9 @@ var rangeslider = document.getElementById("sliderRange");
 var output = document.getElementById("mySlider");
 output.innerHTML = rangeslider.value;
 
+d3.json(url).then(function (data) {
+  console.log('orig json >>> ', data);
+});
 
 rangeslider.oninput = function () {
   output.innerHTML = this.value;
@@ -36,6 +39,8 @@ rangeslider.oninput = function () {
 
     data.forEach(function (d) {
       d.mph_avg = +d.mph_avg;
+      
+      //d.mph = +d.mph;
 
       d.change_mph_avg = +d.change_mph_avg;
       d.change_mph_avg = Math.abs(d.change_mph_avg);
