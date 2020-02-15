@@ -26,15 +26,3 @@
     left: 50%;
     transform: translate(-50%, -50%); */
   }
-
-/* 
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-
-  > .summary_map,
-  > [class*="summary_map-"] {
-    padding-right: 0;
-    padding-left: 0;
-  }
-} */

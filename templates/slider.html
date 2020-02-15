@@ -42,10 +42,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="navbar">
-                    <h2><a class="index" href="index.html">Wind Energy in America</a></h2>
+                    <h2><a class="index" href="{{ url_for('home') }}">Wind Energy in America</a></h2>
                     <div>
-                        <!-- Links to other pages will go hear -->
-                        <!-- Use this section only if we do not need a drop down menu -->
+                        <a class="html" href="{{ url_for('wind_speed_changes') }}">Velocity Changes</a>
+                        <a class="html" href="{{ url_for('wind_direction_changes') }}">Directional Changes</a>
+                        <a class="html" href="{{ url_for('slider') }}">Site Quality</a>
                     </div>
                     <!-- <div class="dropdown">
 
@@ -57,7 +58,7 @@
         <div class="row">
             <div class="col-md-12 summary_map">
                 <div class="box-2">
-                    <h1 class="header"> Average Wind Speed in Major American Cities</h1>
+                    <h1 class="header"> Energy Production vs Life Span of Small Wind Turbines</h1>
                     <div id="map">
 
                         <!-- <script src="script.js"></script> -->
