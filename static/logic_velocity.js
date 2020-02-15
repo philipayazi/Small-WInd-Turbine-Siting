@@ -1,9 +1,3 @@
-customCircleMarker = L.CircleMarker.extend({
-  options: { 
-     city: 'Custom data!'
-  }
-});
-
 // Create function for the map
 function createMap(citiesLayerGroup){
 
@@ -42,20 +36,16 @@ function createMap(citiesLayerGroup){
   // Create the create Markers
   
   function createMarkers(data){
-
-      const mph_change = data.map( direction => {
-        return new customCircleMarker(direction.loc, {
+        console.log(data);
+        
+      const deg_change = data.map( direction => {
+        return L.circleMarker(direction.loc, {
           fillOpacity: 1,
           // fillColor: getColor(earthquake).fillColor,
-          stroke: false,
-          city: direction.city
+          stroke: false
         })
-        .setRadius(direction.change_deg_avg*0.5)
-        .bindPopup(`<html>City: ${direction.city}<br>Avg Change Degree: ${direction.change_deg_avg}</html>`)
-        .on('click', function(){
-          console.log(this)
-          window.open(`/heatmap/${this.options.city}`, '_blank')
-        })
+        .setRadius(direction.mph_avg*4)
+        .bindPopup(`<html>City: ${direction.city}<br>Avg Change MPH: ${direction.change_mph_avg}</html>`)
       
       //   function getColor(earthquake){
       //     let color = '';
@@ -82,7 +72,7 @@ function createMap(citiesLayerGroup){
   
   
   
-    createMap(L.layerGroup(mph_change))
+    createMap(L.layerGroup(deg_change))
   }
   
   url = "/allcities"

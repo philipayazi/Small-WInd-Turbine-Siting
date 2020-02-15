@@ -1,5 +1,5 @@
 
-url = "http://localhost:5000"
+url = "/allcities"
 
 // ================================ table 
 // Define SVG area dimensions
@@ -48,7 +48,7 @@ rangeslider.oninput = function () {
       d.change_deg_avg = +d.change_deg_avg;
       d.change_deg_avg = Math.abs(d.change_deg_avg);
 
-      d.qualty = d.mph_avg * sliderValue + (d.change_mph_avg + d.change_deg_avg) * (100.0 - sliderValue);
+      d.qualty = (d.mph_avg * sliderValue + (d.change_mph_avg + d.change_deg_avg) * (100.0 - sliderValue)/10);
       console.log('qualty >>> ', d.qualty);
 
     });

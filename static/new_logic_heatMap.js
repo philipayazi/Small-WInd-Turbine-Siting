@@ -1,5 +1,5 @@
-url = "http://localhost:5000"
-
+url = "/allcities"
+console.log(city)
 // d3.json(url).then(function (data) {
 d3.json(url, function (error, data) {
 

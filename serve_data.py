@@ -27,11 +27,15 @@ def wind_direction_changes():
 
 @app.route('/slider')
 def slider():
-    return render_template('slider.html')
+    return render_template('slider_2.html')
 
-# @app.route('/')
-# def index():
-#     return redirect('/home')
+@app.route('/')
+def index():
+    return redirect('/home')
+
+@app.route('/heatmap/<selected_city>')
+def get_city(selected_city):
+    return render_template('newHeatMap.html', city = selected_city)
 
 if __name__ == '__main__':
     app.run(debug=True)

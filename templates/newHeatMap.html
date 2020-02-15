@@ -14,10 +14,10 @@
 		<h1>Circular heat chart</h1>
 		<div class="chart" id="chart"></div>
 	</section>
-
+	<script type= "text/javascript">var city = {{ city }}</script>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<script src="static/circularHeatChart.js"></script>
-	<script src="static/new_logic_heatMap.js"></script>
+	<script src="{{ url_for('static', filename='circularHeatChart.js') }}"></script>
+	<script src="{{ url_for('static', filename='new_logic_heatMap.js') }}"></script>
 
 	<!-- <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 	<script>

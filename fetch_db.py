@@ -3,7 +3,7 @@ from flask import jsonify
 
 def get_db():
     # Make connection to DB and return database
-    client = MongoClient('mongodb://localhost:27017')#need to replace local host with server path
+    client = MongoClient('mongodb+srv://small_wind:datascience@cluster0-enyp4.mongodb.net/test?retryWrites=true&w=majority')#need to replace local host with server path
     return client.smallWind
 
     # create function to return a list of all cities, all monthly wind speeds, and all monthly wind directions
