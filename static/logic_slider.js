@@ -11,7 +11,7 @@ var svgHeight = 500; //660;
 var chartMargin = {
   top: 30,
   right: 30,
-  bottom: 30,
+  bottom: 80, //30,
   left: 30
 };
 
@@ -91,7 +91,15 @@ rangeslider.oninput = function () {
 
     chartGroup.append("g")
       .attr("transform", `translate(0, ${chartHeight})`)
-      .call(bottomAxis);
+      .call(bottomAxis)
+      // .attr("transform", 'rotate(-65)');
+      // .attr("transform", "translate(" + gridSize / 2 + ", -6)rotate(-90)")
+      .selectAll("text")
+      .attr("y", 0)
+      .attr("x", 9)
+      .attr("dy", ".35em")
+      .attr("transform", "rotate(90)")
+      .style("text-anchor", "start");
 
     // Create one SVG rectangle per piece of tvData
     // Use the linear and band scales to position each rectangle within the chart

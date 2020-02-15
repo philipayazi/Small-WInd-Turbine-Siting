@@ -4,17 +4,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>Circular heat chart example</title>
-	<link rel="stylesheet" href="slider_style.css">
-	<link rel="stylesheet" href="svg.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='slider_style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='svg.css') }}">
 	<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
 </head>
 
 <body>
 	<section>
-		<h1>Circular heat chart</h1>
+		<h1>Monthly Wind Speed for {{city}} [2013-2017]</h1>
 		<div class="chart" id="chart"></div>
 	</section>
-	<script type= "text/javascript">var city = {{ city }}</script>
+	<script type= "text/javascript">var city = '{{ city }}'; console.log('{{city}}'); </script>
+
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="{{ url_for('static', filename='circularHeatChart.js') }}"></script>
 	<script src="{{ url_for('static', filename='new_logic_heatMap.js') }}"></script>

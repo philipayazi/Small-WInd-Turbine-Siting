@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
     <!-- Our CSS -->
-    <link rel="stylesheet" href="slider_style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='slider_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_bar.css') }}">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css">
     <!-- D3 (I dont think we will need this)-->

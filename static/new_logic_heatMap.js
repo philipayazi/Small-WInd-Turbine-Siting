@@ -7,7 +7,7 @@ d3.json(url, function (error, data) {
 
   data.forEach(function (d) {
 
-    if (d.city == 'Denver') {
+    if (d.city === city ) {
       console.log('selected mph >>>', d.mph.slice(0, 60));
 
       /* Label data */
