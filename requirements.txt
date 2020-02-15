@@ -15,6 +15,7 @@ cryptography==2.8
 cycler==0.10.0
 decorator==4.4.0
 defusedxml==0.6.0
+dnspython==1.16.0
 entrypoints==0.3
 Flask==1.1.1
 future==0.18.2
@@ -91,4 +92,3 @@ widgetsnbextension==3.5.1
 win-inet-pton==1.1.0
 wincertstore==0.2
 wordcloud==1.6.0
-pymongo[srv]
