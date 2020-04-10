@@ -29,8 +29,8 @@
             <div class="navbar">
                 <h2><a class="index" href="{{ url_for('home') }}">Wind Energy in America</a></h2>
                 <div>
-                    <a class="html" href="{{ url_for('wind_speed_changes') }}">Velocity Changes</a>
-                    <a class="html" href="{{ url_for('wind_direction_changes') }}">Directional Changes</a>
+                    <a class="html" href="{{ url_for('wind_speed_changes') }}">Production</a>
+                    <a class="html" href="{{ url_for('wind_direction_changes') }}">Life Span</a>
                     <a class="html" href="{{ url_for('slider') }}">Site Quality</a>
                     <!-- Will need a 4th web page that opens when  city is clicked -->
                 </div>
@@ -44,11 +44,11 @@
     <div class="row">
         <div class="col-md-12 summary_map">
             <div class="box-2">
-                <h1 class="text-center">Average Change in Wind Speed for Major American Cities</h1>
+                <h1 class="text-center">Average Wind Speeds in Major American Cities</h1>
                     <div id="map">
                         <!-- <script src="script.js"></script> -->
                         <script type="text/javascript" src="static/config.js"></script>
-                        <script type="text/javascript" src="static/logic_velocity_change.js"></script>
+                        <script type="text/javascript" src="static/avg_wind_speed.js"></script>
                     </div>  
             </div>
         </div>
