@@ -1,10 +1,71 @@
+// function loadCircularHeatMap (dataset, dom_element_to_append_to,radial_labels,segment_labels) {
+
+//     var margin = {top: 50, right: 50, bottom: 50, left: 50};
+//     var width = 600 - margin.left - margin.right;
+
+//     var height = width;
+//     var innerRadius = width/14;
+//     var segmentHeight = (width - margin.top - margin.bottom - 2*innerRadius )/(2*radial_labels.length)
+
+//     var chart = circularHeatChart()
+//     .innerRadius(innerRadius)
+//     .segmentHeight(segmentHeight)
+//     .range(["white", "#01579b"])
+//     .radialLabels(radial_labels)
+//     .segmentLabels(segment_labels);
+
+//     chart.accessor(function(d) {return d.value;})
+
+//     var svg = d3.select(dom_element_to_append_to)
+//     .selectAll('svg')
+//     .data([dataset])
+//     .enter()
+//     .append('svg')
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+//     .append('g')
+//     .attr("transform",
+//         "translate(" + ( (width )/2 - (radial_labels.length*segmentHeight + innerRadius)  ) + "," + margin.top + ")")
+//     .call(chart);
+
+//     var tooltip = d3.select(dom_element_to_append_to)
+//     .append('div')
+//     .attr('class', 'tooltip');
+
+//     tooltip.append('div')
+//     .attr('class', 'month');
+//     tooltip.append('div')
+//     .attr('class', 'value');
+//     tooltip.append('div')
+//     .attr('class', 'type');
+
+//     svg.selectAll("path")
+//     .on('mouseover', function(d) {
+//         tooltip.select('.month').html("<b> Month: " + d.month + "</b>");
+//         tooltip.select('.type').html("<b> Type: " + d.type + "</b>");
+//         tooltip.select('.value').html("<b> Value: " + d.value + "</b>");
+
+//         tooltip.style('display', 'block');
+//         tooltip.style('opacity',2);
+//     })
+//     .on('mousemove', function(d) {
+
+//         tooltip.style('top', (d3.event.layerY + 10) + 'px')
+//         .style('left', (d3.event.layerX - 25) + 'px');
+//     })
+//     .on('mouseout', function(d) {
+//         tooltip.style('display', 'none');
+//         tooltip.style('opacity',0);
+//     });
+// }
+
 function circularHeatChart() {
     var margin = {top: 20, right: 20, bottom: 20, left: 20},
     innerRadius = 50,
-    numSegments = 24,
+    numSegments = 12,
     segmentHeight = 20,
     domain = null,
-    range = ["white", "red"],
+    range = ["#FF0000"],
     accessor = function(d) {return d;},
     radialLabels = segmentLabels = [];
 

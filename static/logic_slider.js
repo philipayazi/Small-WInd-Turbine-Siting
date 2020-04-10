@@ -11,8 +11,8 @@ var svgHeight = 500; //660;
 var chartMargin = {
   top: 30,
   right: 30,
-  bottom: 80, //30,
-  left: 30
+  bottom: 100, //30,
+  left: 80
 };
 
 // Define dimensions of the chart area
@@ -57,10 +57,30 @@ rangeslider.oninput = function () {
     d3.select("svg").remove()
 
     ////Select body, append SVG area to it, and set the dimensions
-    var svg = d3.select("body")
+    var svg = d3.select(".box-2")
       .append("svg")
       .attr("height", svgHeight)
       .attr("width", svgWidth);
+
+      svg.append("rect")
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .attr("fill", "white");
+
+      svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - chartMargin.left +100)
+      .attr("x",0 - (chartHeight / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Quality Metric");    
+
+      svg.append("text")             
+      .attr("transform",
+            "translate(" + ((chartWidth + 90)/2) +  " ," + 
+                           (chartHeight + chartMargin.top + 90) + ")")
+      .style("text-anchor", "middle")
+      .text("City");
 
     // Append a group to the SVG area and shift ('translate') it to the right and to the bottom
     var chartGroup = svg.append("g")
@@ -97,7 +117,7 @@ rangeslider.oninput = function () {
       .selectAll("text")
       .attr("y", 0)
       .attr("x", 9)
-      .attr("dy", ".35em")
+      .attr("dy", ".5em")
       .attr("transform", "rotate(90)")
       .style("text-anchor", "start");
 
