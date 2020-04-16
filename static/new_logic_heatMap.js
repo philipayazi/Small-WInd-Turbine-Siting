@@ -8,7 +8,7 @@ d3.json(url, function (error, data) {
   data.forEach(function (d) {
 
     if (d.city === city ) {
-      console.log('selected mph >>>', d.mph.slice(0, 60));
+      console.log('selected mph >>>', d.mph.slice(0, 61));
 
       /* Label data */
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -21,7 +21,7 @@ d3.json(url, function (error, data) {
         .innerRadius(20)
         .numSegments(12)
         // .domain([50, 200])
-        .range(['white', 'black'])
+        .range(['white', 'green'])
         .segmentLabels(months)
         .radialLabels(years);
 

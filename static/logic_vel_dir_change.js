@@ -28,6 +28,10 @@ L.control.layers(baseMaps).addTo(myMap)
 
 url = "/allcities"
 d3.json(url).then( data => {
+
+    // delta_mph = data.change_mph_avg.toFixed(2)
+    // console.log(delta_mph)
+
     const degree = data.map( city => {
         L.circleMarker(city.loc, {
                 fillOpacity: 0.5,
@@ -51,12 +55,12 @@ d3.json(url).then( data => {
                                 color: "orange"
                             })
                             .setRadius(city.change_mph_avg*20)
-                            .bindPopup(`<html>City: ${city.city}<br>Speed (MPH): ${city.change_mph_avg}<br>Direction (Degree): ${city.change_deg_avg}</html>`)
+                            .bindPopup(`<html>City: ${city.city}<br>Speed (MPH): ${city.change_mph_avg.toFixed(2)}<br>Direction (Degree): ${city.change_deg_avg.toFixed(2)}</html>`)
                             .addTo(myMap)
                         });
 
     
 
-    L.control.layers(degree, velocity)
+    L.control.layers(degree, velocity);
 
-})
+});
