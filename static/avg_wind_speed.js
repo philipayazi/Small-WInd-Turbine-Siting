@@ -68,7 +68,7 @@ d3.json(url).then(function (data) {
       .attr("x",0 - (chartHeight / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Quality Metric");    
+      .text("Average Wind Speed (mph)");    
 
       svg.append("text")             
       .attr("transform",
