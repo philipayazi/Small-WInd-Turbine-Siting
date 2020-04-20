@@ -76,4 +76,6 @@ function createMap(citiesLayerGroup){
   }
   
   url = "/allcities"
+  // url = "http://localhost:5000/wind_speed_changes"
+
   d3.json(url).then( data => createMarkers(data))
