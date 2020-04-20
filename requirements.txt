@@ -2,7 +2,7 @@ asn1crypto==1.2.0
 attrs==19.2.0
 backcall==0.1.0
 beautifulsoup4==4.8.1
-bleach==3.1.0
+bleach==3.1.4
 bs4==0.0.1
 census==0.8.13
 certifi==2019.9.11
