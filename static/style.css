@@ -14,22 +14,13 @@
 #map {
 height: 640px;
 width: 100%;
-/* padding: 10px; */
-/* color: white; */
 margin: 0;
 }
-
-/* #chart1{
-  height: 100%;
-  width: 100%;
-  
-} */
 
 .summary_map {
   height: 80%;
   width: 100%;
   background-color: white;
-  /* padding: 80px; */
   position: absolute;
   top: 50%;
   left: 50%;

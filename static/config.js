@@ -1,1 +1,1 @@
-const API_KEY = "pk.eyJ1IjoicGhpbGlwYXlhemkiLCJhIjoiY2s1eWp4YXZqMmh0eTNkb25yb2pvemN2OSJ9.bEEgjklDDpIidkMgcHYdfw";
+// const API_KEY = "INSERT API KEY HERE!";

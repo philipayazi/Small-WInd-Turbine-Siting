@@ -19,8 +19,6 @@
     
 </head>
 <body>
-    <!-- Our JavaScript -->
-    <!-- <script type="text/javascript" src="static/js/logic_2.js"></script> -->
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 <div class="container-fluid">
@@ -32,12 +30,7 @@
                     <a class="html" href="{{ url_for('wind_speed_changes') }}">Production</a>
                     <a class="html" href="{{ url_for('wind_direction_changes') }}">Life Span</a>
                     <a class="html" href="{{ url_for('slider') }}">Site Quality</a>
-                    <!-- Will need a 4th web page that opens when  city is clicked -->
                 </div>
-                <!-- <div class="dropdown">
-
-                </div> -->
-
             </div>
         </div>
     </div>
@@ -46,26 +39,11 @@
             <div class="box-1">
                 <h1 class="text-center">Average Wind Speeds in Major American Cities</h1>
                     <div align="center" id="chart1">
-                        <!-- <script src="script.js"></script> -->
                         <script type="text/javascript" src="static/config.js"></script>
                         <script type="text/javascript" src="static/avg_wind_speed.js"></script>
                     </div>  
             </div>
         </div>
-        <!-- <div class="col-md-6 heatMap">
-            <div class="box-2">
-                <section>
-                    <h1>Monthly Wind Speed for {{city}} [2013-2017]</h1>
-                    <div id="chart"></div>
-                </section>
-                <script type= "text/javascript">var city = '{{ city }}'; console.log('{{city}}'); </script>
-            
-                <script src="https://d3js.org/d3.v3.min.js"></script>
-                <script src="{{ url_for('static', filename='circularHeatChart.js') }}"></script>
-                <script src="{{ url_for('static', filename='new_logic_heatMap.js') }}"></script>
-            </div>
-        </div>
-    </div> -->
     <div class="footer text-muted">
         Rice University Data Science Boot Camp (2020)
     </div>

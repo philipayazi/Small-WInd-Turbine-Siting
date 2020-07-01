@@ -28,10 +28,6 @@ L.control.layers(baseMaps).addTo(myMap)
 
 url = "/allcities"
 d3.json(url).then( data => {
-
-    // delta_mph = data.change_mph_avg.toFixed(2)
-    // console.log(delta_mph)
-
     const degree = data.map( city => {
         L.circleMarker(city.loc, {
                 fillOpacity: 0.5,
@@ -39,11 +35,6 @@ d3.json(url).then( data => {
                 color: "red"
             })
             .setRadius(city.change_deg_avg)
-
-            // .on('click', function(){
-            //     console.log(this)
-            //     window.open(`/heatmap/${this.options.city}`, '_blank')
-            // })
             .addTo(myMap)
         });
 
@@ -58,8 +49,6 @@ d3.json(url).then( data => {
                             .bindPopup(`<html>City: ${city.city}<br>Speed (MPH): ${city.change_mph_avg.toFixed(2)}<br>Direction (Degree): ${city.change_deg_avg.toFixed(2)}</html>`)
                             .addTo(myMap)
                         });
-
-    
 
     L.control.layers(degree, velocity);
 

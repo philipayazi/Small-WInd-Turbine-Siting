@@ -39,8 +39,6 @@ rangeslider.oninput = function () {
 
     data.forEach(function (d) {
       d.mph_avg = +d.mph_avg;
-      
-      //d.mph = +d.mph;
 
       d.change_mph_avg = +d.change_mph_avg;
       d.change_mph_avg = Math.abs(d.change_mph_avg);
@@ -106,7 +104,6 @@ rangeslider.oninput = function () {
 
     // Create a linear scale for the vertical axis.
     var yLinearScale = d3.scaleLinear()
-      // .domain([0, d3.max(tvData, d => d.hours)])
       .domain([0, 400])
       .range([chartHeight, 0]);
 
@@ -125,8 +122,6 @@ rangeslider.oninput = function () {
     chartGroup.append("g")
       .attr("transform", `translate(0, ${chartHeight})`)
       .call(bottomAxis)
-      // .attr("transform", 'rotate(-65)');
-      // .attr("transform", "translate(" + gridSize / 2 + ", -6)rotate(-90)")
       .selectAll("text")
       .attr("y", 0)
       .attr("x", 9)

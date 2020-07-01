@@ -21,9 +21,6 @@ var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
 
 //// ================================ slider
-// var rangeslider = document.getElementById("sliderRange");
-// var output = document.getElementById("mySlider");
-// output.innerHTML = rangeslider.value;
 
 d3.json(url).then(function (data) {
   console.log('orig json >>> ', data);
@@ -40,12 +37,6 @@ d3.json(url).then(function (data) {
       .attr("height", svgHeight)
       .attr("width", svgWidth);
 
-    // // 
-    //   svg.append("rect")
-    //   .attr("width", "100%")
-    //   .attr("height", "100%")
-    //   .attr("fill", "white");
-    // Append border around bar chart
       svg.append("rect")
       .attr("x", 0)
       .attr("y", 0)
@@ -54,7 +45,6 @@ d3.json(url).then(function (data) {
       .style("stroke", "black")
       .style("fill", "white")
       .style("stroke-width", 2);
-      // .attr("style", "outline: thin solid black;");
 
     // Append a group to the SVG area and shift ('translate') it to the right and to the bottom
     var chartGroup = svg.append("g")
@@ -85,7 +75,6 @@ d3.json(url).then(function (data) {
 
     // Create a linear scale for the vertical axis.
     var yLinearScale = d3.scaleLinear()
-      // .domain([0, d3.max(tvData, d => d.hours)])
       .domain([0, 10])
       .range([chartHeight, 0]);
 
@@ -102,8 +91,6 @@ d3.json(url).then(function (data) {
     chartGroup.append("g")
       .attr("transform", `translate(0, ${chartHeight})`)
       .call(bottomAxis)
-      // .attr("transform", 'rotate(-65)');
-      // .attr("transform", "translate(" + gridSize / 2 + ", -6)rotate(-90)")
       .selectAll("text")
       .attr("y", 0)
       .attr("x", 9)
@@ -138,16 +125,6 @@ d3.json(url).then(function (data) {
       })
       .on('click', function(d){
         location.assign("/heatmap/"+d.city)
-
-      // .sort(function(d){
-      //   return d3.descending(d.value)
-      // })
-      // .on('click', function(d){
-
-      // })
-
-      // console.log(this)
-      // window.open(`/heatmap/${this.options.city}`, '_blank')
       });
 
       
