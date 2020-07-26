@@ -10,12 +10,26 @@ def get_db():
 def all_cities():
     db = get_db()
 
-    cities = [city for city in db.mpg_ang.aggregate([
-        {"$project": {"_id": 0,"city": 1,"loc": 1, "mph": 1, "deg": 1, "mph_avg": {"$avg": "$mph"}, "deg_avg": {"$avg": "$deg"}, "change_mph_avg": {"$avg": "$mph_change"}  , "change_deg_avg": {"$avg": "$deg_change"}}}
-        ])]
-
-    
-    return cities
+    return [
+        city
+        for city in db.mpg_ang.aggregate(
+            [
+                {
+                    "$project": {
+                        "_id": 0,
+                        "city": 1,
+                        "loc": 1,
+                        "mph": 1,
+                        "deg": 1,
+                        "mph_avg": {"$avg": "$mph"},
+                        "deg_avg": {"$avg": "$deg"},
+                        "change_mph_avg": {"$avg": "$mph_change"},
+                        "change_deg_avg": {"$avg": "$deg_change"},
+                    }
+                }
+            ]
+        )
+    ]
 
 if __name__ == '__main__':
     print(all_cities())
